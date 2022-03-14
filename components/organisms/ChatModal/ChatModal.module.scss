@@ -1,0 +1,13 @@
+.modal {
+  position: fixed;
+  height: 100vh;
+  background: rgba($color: #000000, $alpha: 0.8);
+  top: 0;
+  width: 100%;
+  overflow-y: auto;
+  z-index: 1000000000;
+
+  .modal_inner {
+    width: 50%;
+  }
+}
