@@ -4,6 +4,8 @@ import ChatForm from "../ChatForm"
 export default function ContactSection() {
   const { visitorName } = useAppContext()
 
+  console.log(visitorName)
+
   return (
     <section className="py-24 text-center">
       <h1 className="text-5xl font-medium">
