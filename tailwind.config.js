@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Be Vietnam Pro", ...defaultTheme.fontFamily.sans]
+        sans: ["League Spartan", ...defaultTheme.fontFamily.sans]
       }
     }
   },

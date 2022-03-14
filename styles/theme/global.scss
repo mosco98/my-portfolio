@@ -1,9 +1,280 @@
+html {
+  scroll-behavior: smooth;
+  @apply selection:bg-red-400;
+}
+
 body {
-  background: #1d1d1d;
+  background: #000000;
   color: #fff;
+}
+
+input,
+textarea {
+  @apply px-2 py-3 rounded-sm;
+  color: black;
+  @apply outline-red-400;
+  font-size: 18px;
+}
+
+textarea {
+  min-height: 125px;
+}
+
+a {
+  position: relative;
+  user-select: none;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 25%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    @apply bg-red-400;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.15s linear;
+    // mix-blend-mode: multiply;
+  }
+
+  &.big::before {
+    height: 5px !important;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.btn-primary {
+  position: relative;
+  @apply bg-red-400 rounded-sm;
+  font-size: 18px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.4);
+    @apply rounded-sm;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.15s linear;
+    mix-blend-mode: multiply;
+  }
+
+  &:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+.btn_has_waves {
+  display: inline-block;
+  position: relative;
+  border: 1px solid #fff;
+  // @apply border border-red-400;
+  font-size: 18px;
+  padding: 7px 22px;
+  overflow: hidden;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    @apply bg-red-400;
+  }
+
+  &:hover .wave {
+    top: 100%;
+  }
+
+  .wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: -50%;
+      width: 140px;
+      height: 100px;
+      @apply bg-red-400;
+      border-radius: 40%;
+      animation: rotate 5s linear infinite;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 80%;
+      right: -80%;
+      width: 140px;
+      height: 100px;
+      @apply bg-red-400;
+      border-radius: 45%;
+      animation: rotate 7.5s linear infinite;
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .main {
   min-height: 100vh;
-  padding: 30px;
+}
+
+.big-text {
+  font-size: 260px;
+  font-weight: 900;
+  @apply text-red-400;
+  // -webkit-text-fill-color: transparent; /* Will override color (regardless of order) */
+  // -webkit-text-stroke-width: 1px;
+  // -webkit-text-stroke-color: #f87171;
+}
+
+.my_name {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 20%;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    @apply bg-red-400;
+    z-index: -1;
+    transform-origin: bottom left;
+    animation: underline 0.5s linear;
+    // animation-delay: 4s;
+  }
+}
+
+@keyframes underline {
+  0% {
+    transform: scaleX(0);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.waving_emoji {
+  animation-name: wave;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.progress-bar {
+  width: 500px;
+  height: 5px;
+  background: rgba($color: #ffffff, $alpha: 0.4);
+  border-radius: 8px;
+  @apply mx-auto mt-3;
+
+  .progress {
+    width: 0%;
+    background: white;
+    height: 100%;
+    border-radius: 8px;
+    transition: all 0.5s linear;
+  }
+}
+
+.about-me-hero {
+  position: relative;
+  margin-bottom: 10rem;
+  opacity: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url("/img/about-me-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 75vh;
+    background-attachment: fixed;
+    z-index: -1000;
+    opacity: 0.7;
+  }
+}
+
+.me-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("/img/me.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    opacity: 0.2;
+    background-attachment: fixed;
+  }
+
+  .text-ctn {
+    p {
+      max-width: 900px;
+    }
+  }
+}
+
+.project-img {
+  transform: rotate3d(0, 0, 0, 90deg);
 }

@@ -5,9 +5,31 @@
 
   ul {
     li {
+      position: relative;
       display: inline-block;
       margin-right: 50px;
       cursor: pointer;
+      font-size: 20px;
+
+      &:last-child {
+        margin-right: 0px !important;
+      }
+
+      a {
+        &::before {
+          // height: 5px;
+          bottom: 15% !important;
+        }
+      }
+
+      .active::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transform: scaleX(1) !important;
+        @apply bg-red-400;
+      }
     }
   }
 }
